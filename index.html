@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#72cce3">
+  <meta charset="UTF-8"/>
+  <title>Water helper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div id="wrapper">
+  <main id="app">
+    <h1>Record a drink</h1>
+
+    <section id="action-buttons">
+        <button id="drank-btn">💧 I drank water</button>
+        <button id="tried-btn">✨ I tried to drink water</button>
+    </section>
+
+      <div id="bottle-wrapper">
+      <div id="bottle">
+        <div id="fill"></div>
+        <div id="fill-label">
+          <span id="fill-amount">800</span>
+          <span class="unit">ml</span>
+        </div>
+      </div>
+      </div>
+
+    <section id="stats">
+        <p>Today's total: <span id="hydration-total">0</span> ml</p>
+        <p>Points: <span id="points-total">0</span></p>
+        <p>Water Diamonds: <span id="diamonds-total">0</span></p>
+    </section>
+
+    <section id="message" class="hidden">
+      <h1>hi</h1>
+    </section>
+
+  </main>  
+
+  <div id="amount-overlay" class="hidden">
+      <section id="amount-selector">
+          <h2>Select amount:</h2>
+          <button data-amount="50">🥤 Small sip (50ml)</button>
+          <button data-amount="200">🍶 Cup (200ml)</button>
+          <button data-amount="400">💧 Big drink (400ml)</button>
+          <button data-amount="800">🧃 Full bottle (800ml)</button>
+          <button id="close-amount">⬅️ Back</button>
+      </section>
+    </div>
+
+
+  <footer id="footer-nav">
+    <button onclick="window.location.href='calendar.html'">📅 Calendar</button>
+    <button onclick="window.location.href='shop.html'">🛍️ Shop</button> <!-- Placeholder for now -->
+  </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

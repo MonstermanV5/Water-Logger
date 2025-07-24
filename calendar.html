@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hydration Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="calendar.css" />
+</head>
+
+<body>
+  <main id="calendar-page">
+    <h1>📅 Calendar</h1>
+
+    <div id="month-selector">
+        <h2 id="current-month">July 2025</h2>
+        <div id="month-buttons">
+            <button id="prev-month">⬅️</button>
+            <button id="next-month">➡️</button>
+        </div>
+    </div>
+    
+    <div id="today-button-wrapper">
+        <button id="go-today">📍 Today</button>
+    </div>
+
+    <div id="calendar-labels">
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+        <div>Sun</div>
+    </div>
+    <div id="calendar-grid"></div>
+    
+    <div id="day-popup" class="hidden">
+        <div id="popup-content">
+            <h2 id="popup-date"></h2>
+            <ul id="popup-details" class="popup-list"></ul>
+            <div id="edit-buttons">
+                <button id="add-drink">💧 Add drink</button>
+                <button id="add-tried">✨ Add tried</button>
+                <button id="clear-day" class="danger">🗑️ Clear this day</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="amount-overlay" class="hidden">
+      <section id="amount-selector">
+          <h2>Select amount:</h2>
+          <button data-amount="50">🥤 Small sip (50ml)</button>
+          <button data-amount="200">🍶 Cup (200ml)</button>
+          <button data-amount="400">💧 Big drink (400ml)</button>
+          <button data-amount="800">🧃 Full bottle (800ml)</button>
+          <button id="close-amount">⬅️ Back</button>
+      </section>
+    </div>
+
+    <footer id="footer-nav">
+      <button onclick="window.location.href='shop.html'">🛍️ Shop</button> <!-- Placeholder for now -->
+      <button onclick="window.location.href='index.html'">🏠 Home</button>
+    </footer>
+  </main>
+  <script src="calendar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+/* --- GENERAL RESET & BASE ---
+- remove default margins and padding
+- set box-sizing to border-box
+- apply soft background color (light pastel by default)
+- use readable sans-serif font
+- set base font size (adjustable for accessibility) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+  transition: background-color 0.2s, transform 0.1s;
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f3f9fb;
+    color: #333;
+    padding: 0 1.5rem;
+    line-height: 1.6;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* --- LAYOUT --- */
+/* - center main content
+- use vertical column layout
+- apply spacing between sections
+- ensure mobile-friendly max-width */
+#app {
+  max-width: 480px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 4rem; /* space for footer */
+  z-index: 1;
+  flex: 1;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* --- HEADINGS --- */
+/* - slightly larger font size
+- soft accent color or bolder pastel shade */
+h1, h2 {
+    text-align: center;
+    color: #347ea8;
+}
+
+
+/* --- BUTTONS --- */
+/* - rounded corners
+- soft pastel background
+- hover effect (slightly darker or glowing)
+- consistent padding and font size
+- large enough for touch targets
+- high contrast text for accessibility */
+button {
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+    background-color: #d0f0dd;
+    color: #003344;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #b0e0ff;
+}
+
+button:focus {
+    outline: 2px solid #80d4ff;
+    outline-offset: 2px;
+}
+
+
+/* --- AMOUNT SELECTOR --- */
+/* - styled similarly to main buttons
+- grouped together visually
+- optionally animate in/out later */
+#amount-selector h2 {
+    margin-bottom: 0.5rem;
+}
+
+#amount-overlay {
+  transition: opacity 0.3s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  visibility: visible;
+}
+
+#amount-overlay.fading-out {
+  opacity: 0;
+}
+
+#amount-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#amount-selector {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+
+/* --- STATS DISPLAY --- */
+/* - smaller font than buttons
+- use icons (💎, 🔷) + text
+- color accents to match their meaning (e.g., diamond = blue, points = gold) */
+#stats {
+    background-color: #ffffffcc;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+#stats p {
+    font-size: 1rem;
+    margin: 0.25rem 0;
+}
+
+
+/* --- MESSAGE AREA --- */
+/* - light green background or soft alert style
+- rounded corners
+- padding inside box
+- optionally fades in/out */
+#message {
+    background-color: #e6ffe6;
+    border-left: 4px solid #5cb85c;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+
+/* === Responsive Enhancements (Optional) === */
+@media (max-width: 360px) {
+  button {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+/* @media (max-width: 400px) {
+  #bottle {
+    transform: scale(0.85);
+  }
+} */
+
+/* --- DARK MODE SUPPORT (Later) --- */
+/* - define body.dark-mode or :root.dark color overrides
+- use CSS variables if helpful */
+
+/* --- FONT SIZE OPTIONS (Later) --- */
+/* - small, medium, large font scale classes
+- possibly use `rem` units and adjust root size */
+
+/* --- HIDDEN ELEMENTS --- */
+/* - class `.hidden` → display: none */
+.hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+
+/* === Bottle Fill Animation === */
+#bottle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+#bottle {
+  position: relative;
+  width: 130px;
+  height: 230px;
+  background: #e0f7ff;
+  border-top: 4px solid #347ea8;
+  border-radius: 30% 30% 10% 10% / 20% 20% 10% 10%;
+  overflow: hidden;
+  clip-path: polygon(
+    40% 0%, 60% 0%,        /* Neck top */
+    60% 10%, 70% 20%,      /* Neck to shoulder */
+    80% 30%, 80% 100%,     /* Body right */
+    20% 100%, 20% 30%,     /* Body left */
+    30% 20%, 40% 10%       /* Shoulder to neck */
+  );
+}
+
+#bottle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), transparent 70%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+#fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, #5ec3e0, #a6e3f3);
+  transition: height 1s ease;
+  z-index: 1;
+}
+
+#fill-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #d0f0ff;
+  border-radius: 2rem;
+  padding: 0.4rem 0.8rem;
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+#footer-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #e0f0ff;
+  border-top: 2px solid #cce;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+#footer-nav button {
+  flex: 1;
+  margin: 0 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: #e0f0ff;
+}
+
+#app {
+  padding-bottom: 4rem;
+}
